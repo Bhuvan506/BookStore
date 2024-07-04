@@ -5,6 +5,8 @@ import io.grpc.ManagedChannelBuilder;
 
 import bookstore.BookServiceOuterClass.*;
 
+import java.util.Iterator;
+
 public class BookClient {
 
         public static void main(String[] args) {
@@ -48,7 +50,15 @@ public class BookClient {
 
                 // Get all books again to ensure the book was deleted
                 GetBooksResponse finalGetResponse = stub.getBooks(GetBooksRequest.newBuilder().build());
-                finalGetResponse.getBooksList().forEach(b -> System.out.println(b.getTitle()));
+                System.out.println(finalGetResponse.getBooksList()); // .forEach(b -> System.out.println(b.getTitle()));
+
+                // Get all books through stream
+                Iterator<Book> books;
+                books = stub.streamBooks(StreamBooksRequest.newBuilder().build());
+                for(int i=0; books.hasNext(); i++) {
+                        book = books.next();
+                        System.out.println(book);
+                }
 
                 // Shutdown channel
                 channel.shutdown();

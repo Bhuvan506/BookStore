@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="bookstore.BookServiceImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-07-03T05:05:49" hostname="Jayams-MacBook-Pro.local" time="0.231">
+  <properties/>
+  <testcase name="testGetBooks" classname="bookstore.BookServiceImplTest" time="0.204"/>
+  <testcase name="testAddBook" classname="bookstore.BookServiceImplTest" time="0.014"/>
+  <testcase name="testUpdateBook" classname="bookstore.BookServiceImplTest" time="0.006"/>
+  <testcase name="testDeleteBook" classname="bookstore.BookServiceImplTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
