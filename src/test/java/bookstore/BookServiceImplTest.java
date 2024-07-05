@@ -68,6 +68,6 @@ public class BookServiceImplTest {
     public void testGetBooks() {
         GetBooksRequest request = GetBooksRequest.newBuilder().build();
         GetBooksResponse response = blockingStub.getBooks(request);
-        assertEquals(true, response.getBooksCount() >= 0);
+        assertTrue(response.getBooksCount() >= 0);
     }
 }

@@ -3,12 +3,15 @@ package bookstore;
 import io.grpc.stub.StreamObserver;
 
 import bookstore.BookServiceOuterClass.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BookServiceImpl extends BookServiceGrpc.BookServiceImplBase {
+    private static Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
 //    private final Map<String, Book> bookStore = new HashMap<>();
     private final MongoBookStore bookStore = new MongoBookStore();
 
@@ -54,6 +57,7 @@ public class BookServiceImpl extends BookServiceGrpc.BookServiceImplBase {
         try {
             bookStore.updateBook(book);
         } catch (IOException e) {
+            logger.warn("Error", e);
             throw new RuntimeException(e);
         }
         UpdateBookResponse response = UpdateBookResponse.newBuilder().setMessage("Book updated successfully").build();

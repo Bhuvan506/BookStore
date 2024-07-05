@@ -47,7 +47,8 @@ public class MongoBookStore {
     }
 
     public void updateBook(final Book book) throws IOException {
-        collection.update(Key.from(book.getIsbn()), new JSONDocument(printer.print(book)), new org.hypertrace.core.documentstore.Filter());
+//        collection.update(Key.from(book.getIsbn()), new JSONDocument(printer.print(book)), new org.hypertrace.core.documentstore.Filter());
+        collection.createOrReplaceAndReturn(Key.from(book.getIsbn()), new JSONDocument(printer.print(book)));
     }
 
     public void deleteBook(final String isbn) throws IOException {
